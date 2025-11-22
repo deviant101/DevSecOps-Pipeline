@@ -155,23 +155,14 @@ jobs:
         with:
           fetch-depth: 0  # Full history for secret scanning
 
-      - name: TruffleHog OSS (Git History Scan)
-        id: trufflehog-git
+      - name: TruffleHog OSS
         uses: trufflesecurity/trufflehog@main
-        continue-on-error: true  # Don't fail pipeline if BASE==HEAD or secrets found
+        continue-on-error: true  # Don't fail pipeline on secrets found
         with:
           path: ./
-          base: ${{ github.event.repository.default_branch }}
-          head: HEAD
+          base: ${{ github.event.before || '' }}
+          head: ${{ github.sha }}
           extra_args: --only-verified
-
-      - name: TruffleHog Filesystem Scan (Fallback)
-        if: steps.trufflehog-git.outcome == 'failure'
-        uses: trufflesecurity/trufflehog@main
-        continue-on-error: true  # Don't fail pipeline on secrets in filesystem scan
-        with:
-          path: ./
-          extra_args: --only-verified --no-update
 
   # Stage 8: Docker Build and Push
   docker-build:
