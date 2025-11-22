@@ -9,7 +9,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: solar-system
+  IMAGE_NAME: ${{ github.repository_owner }}/solar-system
   DOCKER_IMAGE_TAG: ${{ github.sha }}
 
 jobs:
