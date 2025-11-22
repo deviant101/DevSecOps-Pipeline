@@ -4,3 +4,7 @@ solar-system.png
 .talismanrc
 coverage
 test-results.xml
+
+# Environment variables (DO NOT COMMIT)
+.env
+.env.local

@@ -33,10 +33,9 @@ jobs:
 
       - name: Run unit tests
         run: npm test
+        continue-on-error: false  # Fail pipeline if tests fail
         env:
           MONGO_URI: ${{ secrets.MONGO_URI }}
-          MONGO_USERNAME: ${{ secrets.MONGO_USERNAME }}
-          MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
 
       - name: Upload test results
         if: always()
@@ -68,8 +67,6 @@ jobs:
         run: npm run coverage
         env:
           MONGO_URI: ${{ secrets.MONGO_URI }}
-          MONGO_USERNAME: ${{ secrets.MONGO_USERNAME }}
-          MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
 
       - name: Upload coverage reports
         uses: actions/upload-artifact@v4
@@ -296,8 +293,6 @@ jobs:
           docker run -d --name solar-system-app \
             -p 3000:3000 \
             -e MONGO_URI="${{ secrets.MONGO_URI }}" \
-            -e MONGO_USERNAME="${{ secrets.MONGO_USERNAME }}" \
-            -e MONGO_PASSWORD="${{ secrets.MONGO_PASSWORD }}" \
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.ref_name }}-${{ github.sha }}
           
           # Wait for application to be ready
@@ -352,8 +347,6 @@ jobs:
   #             -p 3000:3000 \
   #             --restart unless-stopped \
   #             -e MONGO_URI="${{ secrets.MONGO_URI }}" \
-  #             -e MONGO_USERNAME="${{ secrets.MONGO_USERNAME }}" \
-  #             -e MONGO_PASSWORD="${{ secrets.MONGO_PASSWORD }}" \
   #             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.ref_name }}-${{ github.sha }}
             
   #           # Clean up old images (keep last 3)

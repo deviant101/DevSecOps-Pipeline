@@ -8,6 +8,35 @@ let chaiHttp = require("chai-http");
 chai.should();
 chai.use(chaiHttp); 
 
+// Wait for MongoDB connection before running tests
+before(function(done) {
+    this.timeout(15000); // Increase timeout for MongoDB connection
+    
+    // Check if already connected
+    if (mongoose.connection.readyState === 1) {
+        console.log('MongoDB already connected');
+        return done();
+    }
+    
+    // Wait for connection
+    mongoose.connection.on('connected', function() {
+        console.log('MongoDB connection established for tests');
+        done();
+    });
+    
+    mongoose.connection.on('error', function(err) {
+        console.error('MongoDB connection error:', err.message);
+        done(err);
+    });
+    
+    // Timeout fallback
+    setTimeout(function() {
+        if (mongoose.connection.readyState !== 1) {
+            done(new Error('MongoDB connection timeout'));
+        }
+    }, 14000);
+});
+
 describe('Planets API Suite', () => {
 
     describe('Fetching Planet Details', () => {
