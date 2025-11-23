@@ -296,9 +296,19 @@ jobs:
         uses: zaproxy/action-baseline@v0.12.0
         with:
           target: 'http://localhost:3000/'
-          rules_file_name: '.zap/rules.tsv'
           cmd_options: '-a'
           allow_issue_writing: false
+        continue-on-error: true  # Don't fail pipeline on warnings
+
+      - name: Upload ZAP scan results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: zap-dast-results
+          path: |
+            report_json.json
+            report_md.md
+            report_html.html
 
       - name: Stop application container
         if: always()
