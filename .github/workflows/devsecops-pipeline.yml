@@ -349,10 +349,10 @@ jobs:
       packages: read
     environment:
       name: production
-      url: https://${{ env.WEBAPP_NAME }}.azurewebsites.net
+      url: https://${{ vars.AZURE_WEBAPP_NAME }}.azurewebsites.net
     
     env:
-      WEBAPP_NAME: ${{ secrets.AZURE_WEBAPP_NAME }}
+      WEBAPP_NAME: ${{ vars.AZURE_WEBAPP_NAME }}
       ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
       ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
       ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
@@ -379,7 +379,7 @@ jobs:
       - name: Terraform Plan
         run: |
           terraform plan \
-            -var="app_name=${{ secrets.AZURE_WEBAPP_NAME }}" \
+            -var="app_name=${{ vars.AZURE_WEBAPP_NAME }}" \
             -var="github_username=${{ github.repository_owner }}" \
             -var="github_token=${{ secrets.GITHUB_TOKEN }}" \
             -var="mongo_uri=${{ secrets.MONGO_URI }}" \
@@ -401,7 +401,7 @@ jobs:
       - name: Restart Web App (force pull latest image)
         run: |
           az webapp restart \
-            --name ${{ secrets.AZURE_WEBAPP_NAME }} \
+            --name ${{ vars.AZURE_WEBAPP_NAME }} \
             --resource-group $(terraform output -raw resource_group_name)
         working-directory: ./terraform
 
