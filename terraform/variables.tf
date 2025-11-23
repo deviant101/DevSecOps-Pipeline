@@ -25,7 +25,7 @@ variable "app_name" {
 variable "sku_name" {
   description = "SKU name for App Service Plan (F1=Free, B1=Basic, S1=Standard, P1V2=Premium)"
   type        = string
-  default     = "B1"  # Basic tier - cheapest paid tier with always_on support
+  default     = "F1"  # Free tier - perfect for demo/academic projects
 }
 
 variable "docker_image" {
