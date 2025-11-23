@@ -126,12 +126,24 @@ jobs:
         with:
           args: --severity-threshold=high --json-file-output=snyk-results.json
 
+      - name: Generate Snyk HTML report
+        if: always()
+        continue-on-error: true
+        run: |
+          npx snyk test --severity-threshold=high > snyk-results.txt 2>&1 || true
+          npx snyk-to-html -i snyk-results.json -o snyk-results.html || echo "HTML generation skipped"
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
       - name: Upload Snyk results
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: snyk-results
-          path: snyk-results.json
+          path: |
+            snyk-results.json
+            snyk-results.html
+            snyk-results.txt
 
       - name: Run npm audit
         run: npm audit --json > npm-audit-results.json
@@ -254,12 +266,22 @@ jobs:
           format: 'json'
           output: 'trivy-results.json'
 
+      - name: Run Trivy for HTML output
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.ref_name }}
+          format: 'template'
+          template: '@/contrib/html.tpl'
+          output: 'trivy-results.html'
+
       - name: Upload Trivy results
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: trivy-results
-          path: trivy-results.json
+          path: |
+            trivy-results.json
+            trivy-results.html
 
   # Stage 10: DAST - Dynamic Application Security Testing
   dast-zap:
@@ -298,6 +320,7 @@ jobs:
           target: 'http://localhost:3000/'
           cmd_options: '-a'
           allow_issue_writing: false
+          artifact_name: ''  # Disable ZAP's internal artifact upload (we handle it manually)
         continue-on-error: true  # Don't fail pipeline on warnings
 
       - name: Upload ZAP scan results
