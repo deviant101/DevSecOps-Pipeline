@@ -268,10 +268,11 @@ jobs:
 
       - name: Run Trivy for HTML output
         uses: aquasecurity/trivy-action@master
+        continue-on-error: true
         with:
           image-ref: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.ref_name }}
           format: 'template'
-          template: '@/contrib/html.tpl'
+          template: '@contrib/html.tpl'
           output: 'trivy-results.html'
 
       - name: Upload Trivy results
