@@ -349,7 +349,10 @@ jobs:
       packages: read
     environment:
       name: production
-      url: https://${{ secrets.AZURE_WEBAPP_NAME }}.azurewebsites.net
+      url: https://${{ env.WEBAPP_NAME }}.azurewebsites.net
+    
+    env:
+      WEBAPP_NAME: ${{ secrets.AZURE_WEBAPP_NAME }}
     
     steps:
       - name: Checkout code
