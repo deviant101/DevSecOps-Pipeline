@@ -1,0 +1,13 @@
+# Example terraform.tfvars file
+# Copy this to terraform.tfvars and fill in your values
+# DO NOT commit terraform.tfvars to Git (it's in .gitignore)
+
+resource_group_name   = "rg-solar-system"
+location              = "East US"
+app_service_plan_name = "plan-solar-system"
+app_name              = "solar-system-devsecops-unique123"  # Must be globally unique
+sku_name              = "B1"  # B1, S1, P1V2, or F1 (free)
+docker_image          = "deviant101/solar-system:latest"
+github_username       = "deviant101"
+github_token          = "your-github-pat-here"
+mongo_uri             = "mongodb+srv://user:pass@cluster.mongodb.net/solar-system"
