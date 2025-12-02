@@ -80,6 +80,9 @@ jobs:
   sast-semgrep:
     name: SAST - Semgrep
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
     
     steps:
       - name: Checkout code
@@ -88,17 +91,37 @@ jobs:
       - name: Install Semgrep
         run: pip3 install semgrep
 
-      - name: Run Semgrep scan
+      - name: Run Semgrep scan - JSON output
         continue-on-error: true
         run: |
-          semgrep --config "p/security-audit" --config "p/nodejs" --config "p/owasp-top-ten" --config "p/javascript" --json --output semgrep-results.json . || echo "Semgrep scan completed"
+          semgrep --config "p/security-audit" --config "p/nodejs" --config "p/owasp-top-ten" --config "p/javascript" --json --output semgrep-results.json . || echo "Semgrep JSON scan completed"
+
+      - name: Run Semgrep scan - SARIF output
+        continue-on-error: true
+        run: |
+          semgrep --config "p/security-audit" --config "p/nodejs" --config "p/owasp-top-ten" --config "p/javascript" --sarif --output semgrep-results.sarif . || echo "Semgrep SARIF scan completed"
+
+      - name: Run Semgrep scan - Text output
+        continue-on-error: true
+        run: |
+          semgrep --config "p/security-audit" --config "p/nodejs" --config "p/owasp-top-ten" --config "p/javascript" --text . > semgrep-results.txt 2>&1 || echo "Semgrep text scan completed"
+
+      - name: Upload Semgrep results to GitHub Security
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: 'semgrep-results.sarif'
+          category: 'semgrep'
 
       - name: Upload Semgrep results
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: semgrep-results
-          path: semgrep-results.json
+          path: |
+            semgrep-results.json
+            semgrep-results.sarif
+            semgrep-results.txt
 
   # Stage 6: Dependency Scanning
   dependency-scan:
