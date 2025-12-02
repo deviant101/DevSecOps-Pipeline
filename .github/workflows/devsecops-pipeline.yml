@@ -85,19 +85,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Run Semgrep
-        uses: returntocorp/semgrep-action@v1
-        continue-on-error: true
-        with:
-          config: >-
-            p/security-audit
-            p/nodejs
-            p/owasp-top-ten
-            p/javascript
-          generateSarif: true
+      - name: Install Semgrep
+        run: pip3 install semgrep
 
-      - name: Generate JSON results
-        if: always()
+      - name: Run Semgrep scan
         continue-on-error: true
         run: |
           semgrep --config "p/security-audit" --config "p/nodejs" --config "p/owasp-top-ten" --config "p/javascript" --json --output semgrep-results.json . || echo "Semgrep scan completed"
@@ -107,9 +98,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: semgrep-results
-          path: |
-            semgrep-results.json
-            semgrep.sarif
+          path: semgrep-results.json
 
   # Stage 6: Dependency Scanning
   dependency-scan:
