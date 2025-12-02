@@ -13,9 +13,9 @@ A comprehensive DevSecOps implementation for the Solar System application, demon
 This project showcases a **complete DevSecOps pipeline** that automates security testing, quality assurance, containerization, and deployment of a Node.js application. The Solar System application serves as a practical example for implementing multiple security scanning tools and CI/CD best practices.
 
 ### Live Application
-- **Production URL**: https://solar-system-ssd.azurewebsites.net
-- **Health Check**: https://solar-system-ssd.azurewebsites.net/ready
-- **API Docs**: https://solar-system-ssd.azurewebsites.net/api-docs
+- **Production URL**: https://solar-system-devsecops.azurewebsites.net
+- **Health Check**: https://solar-system-devsecops.azurewebsites.net/ready
+- **API Docs**: https://solar-system-devsecops.azurewebsites.net/api-docs
 
 ## 🏗️ Architecture
 
@@ -35,39 +35,37 @@ This project showcases a **complete DevSecOps pipeline** that automates security
 │                    GitHub Actions DevSecOps Pipeline                 │
 ├──────────────────────────────────────────────────────────────────────┤
 │                                                                      │
-│  Stage 1-2: Build & Test                                             │
+│  Stage 1: Build & Test                                               │
 │  ├─ Code Checkout                                                    │
 │  ├─ Dependency Installation (npm install)                            │
 │  └─ Unit Tests (Mocha + Chai - 11 tests)                             │
 │                                                                      │
-│  Stage 3: Code Coverage                                              │
+│  Stage 2: Code Coverage                                              │
 │  └─ NYC Coverage Analysis (78% threshold enforced)                   │
 │                                                                      │
-│  Stage 4: SAST (Static Application Security Testing)                 │
+│  Stage 3: SAST (Static Application Security Testing)                 │
 │  └─ Semgrep (security-audit, nodejs, OWASP, JavaScript)              │
 │                                                                      │
-│  Stage 5: Dependency Scanning                                        │
+│  Stage 4: Dependency Scanning                                        │
 │  ├─ Snyk (vulnerability detection with HTML reports)                 │
 │  └─ npm audit (built-in security checker)                            │
 │                                                                      │
-│  Stage 6: Secret Detection                                           │
+│  Stage 5: Secret Detection                                           │
 │  └─ TruffleHog (credential leak scanner)                             │
 │                                                                      │
-│  Stage 7: Container Build & Push                                     │
+│  Stage 6: Container Build & Push                                     │
 │  ├─ Docker Build (multi-stage Alpine)                                │
 │  └─ Push to GitHub Container Registry                                │
 │                                                                      │
-│  Stage 8: Container Scanning                                         │
+│  Stage 7: Container Scanning                                         │
 │  └─ Trivy (image vulnerability scanner with HTML reports)            │
 │                                                                      │
-│  Stage 9: DAST (Dynamic Application Security Testing)                │
+│  Stage 8: DAST (Dynamic Application Security Testing)                │
 │  └─ OWASP ZAP (baseline scan on running app)                         │
 │                                                                      │
-│  Stage 10: Infrastructure Provisioning                               │
+│  Stage 9: Infrastructure Provisioning + App Deployment               │
 │  ├─ Terraform Init/Plan/Apply                                        │
-│  └─ Azure Resources (Resource Group, App Service Plan, Web App)      │
-│                                                                      │
-│  Stage 11: Deployment & Verification                                 │
+│  ├─ Azure Resources (Resource Group, App Service Plan, Web App)      │
 │  ├─ Deploy to Azure Web App                                          │
 │  ├─ Restart App (pull latest image)                                  │
 │  └─ Health Check Validation                                          │
@@ -522,13 +520,13 @@ This is an academic project for SSD course. For learning purposes:
 
 ## 🎯 Project Status
 
-✅ **Pipeline**: Fully operational (11 stages)  
+✅ **Pipeline**: Fully operational (9 stages)  
 ✅ **Security Scans**: 6 tools integrated  
 ✅ **Testing**: 11 unit tests passing  
 ✅ **Coverage**: 78% (threshold met)  
 ✅ **Deployment**: Automated to Azure Web App  
 ✅ **Documentation**: Complete  
-✅ **Production Ready**: Live at https://solar-system-ssd.azurewebsites.net  
+✅ **Production Ready**: Live at https://solar-system-devsecops.azurewebsites.net
 
 **Last Updated**: November 24, 2025
 
