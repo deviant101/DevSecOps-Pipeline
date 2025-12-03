@@ -1,0 +1,48 @@
+               
+               
+┌─────────────┐
+│ Scan Status │
+└─────────────┘
+  Scanning 39 files tracked by git with 675 Code rules:
+                                                                                                                        
+  Language      Rules   Files          Origin      Rules                                                                
+ ─────────────────────────────        ───────────────────                                                               
+  <multilang>      14      39          Community     675                                                                
+  json              3       5                                                                                           
+  js               81       4                                                                                           
+  terraform        62       4                                                                                           
+  yaml             19       1                                                                                           
+  dockerfile        4       1                                                                                           
+  html              1       1                                                                                           
+                                                                                                                        
+                  
+                  
+┌────────────────┐
+│ 1 Code Finding │
+└────────────────┘
+              
+    Dockerfile
+   ❯❯❱ dockerfile.security.missing-user.missing-user
+          By not specifying a USER, a program in the container may run as 'root'. This is a security hazard.
+          If an attacker can control a process running as root, they may have control over the container.   
+          Ensure that the last USER in a Dockerfile is a USER other than 'root'.                            
+          Details: https://sg.run/Gbvn                                                                      
+                                                                                                            
+           ▶▶┆ Autofix ▶ USER non-root CMD [ "npm", "start" ]
+           17┆ CMD [ "npm", "start" ]
+
+                
+                
+┌──────────────┐
+│ Scan Summary │
+└──────────────┘
+✅ Scan completed successfully.
+ • Findings: 1 (1 blocking)
+ • Rules run: 184
+ • Targets scanned: 39
+ • Parsed lines: ~100.0%
+ • Scan skipped: 
+   ◦ Files larger than  files 1.0 MB: 1
+ • Scan was limited to files tracked by git
+ • For a detailed list of skipped files and lines, run semgrep with the --verbose flag
+Ran 184 rules on 39 files: 1 finding.

@@ -1,0 +1,1518 @@
+{
+  "vulnerabilities": [
+    {
+      "id": "SNYK-JS-BABELTRAVERSE-5962462",
+      "title": "Incomplete List of Disallowed Inputs",
+      "CVSSv3": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H/E:P",
+      "credit": [
+        "William Khem-Marquez"
+      ],
+      "semver": {
+        "vulnerable": [
+          "<7.23.2",
+          ">=8.0.0-alpha.0 <8.0.0-alpha.4"
+        ]
+      },
+      "exploit": "Proof of Concept",
+      "fixedIn": [
+        "7.23.2",
+        "8.0.0-alpha.4"
+      ],
+      "patches": [],
+      "insights": {
+        "triageAdvice": null
+      },
+      "language": "js",
+      "severity": "critical",
+      "cvssScore": 9.3,
+      "functions": [],
+      "malicious": false,
+      "isDisputed": false,
+      "moduleName": "@babel/traverse",
+      "references": [
+        {
+          "url": "https://github.com/babel/babel/commit/b13376b346946e3f62fc0848c1d2a23223314c82",
+          "title": "GitHub Commit"
+        },
+        {
+          "url": "https://github.com/babel/babel/pull/16033",
+          "title": "GitHub PR"
+        },
+        {
+          "url": "https://github.com/babel/babel/releases/tag/v7.23.2",
+          "title": "GitHub Release"
+        },
+        {
+          "url": "https://github.com/babel/babel/releases/tag/v8.0.0-alpha.4",
+          "title": "GitHub Release"
+        },
+        {
+          "url": "https://steakenthusiast.github.io/2023/10/11/CVE-2023-45133-Finding-an-Arbitrary-Code-Execution-Vulnerability-In-Babel/",
+          "title": "PoC"
+        }
+      ],
+      "cvssDetails": [
+        {
+          "assigner": "NVD",
+          "severity": "high",
+          "cvssV3Vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+          "cvssV3BaseScore": 8.8,
+          "modificationTime": "2024-03-11T09:53:43.127982Z"
+        },
+        {
+          "assigner": "Red Hat",
+          "severity": "high",
+          "cvssV3Vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+          "cvssV3BaseScore": 8.8,
+          "modificationTime": "2024-03-11T09:54:03.083058Z"
+        }
+      ],
+      "cvssSources": [
+        {
+          "type": "primary",
+          "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H/E:P",
+          "assigner": "Snyk",
+          "severity": "critical",
+          "baseScore": 9.3,
+          "cvssVersion": "3.1",
+          "modificationTime": "2024-03-06T14:09:27.066441Z"
+        },
+        {
+          "type": "secondary",
+          "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+          "assigner": "NVD",
+          "severity": "high",
+          "baseScore": 8.8,
+          "cvssVersion": "3.1",
+          "modificationTime": "2024-03-11T09:53:43.127982Z"
+        },
+        {
+          "type": "secondary",
+          "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+          "assigner": "Red Hat",
+          "severity": "high",
+          "baseScore": 8.8,
+          "cvssVersion": "3.1",
+          "modificationTime": "2024-03-11T09:54:03.083058Z"
+        }
+      ],
+      "description": "## Overview\n\nAffected versions of this package are vulnerable to Incomplete List of Disallowed Inputs when using plugins that rely on the `path.evaluate()` or `path.evaluateTruthy()` internal Babel methods. \r\n\r\n\r\n**Note:**\r\n\r\nThis is only exploitable if the attacker uses known affected plugins such as `@babel/plugin-transform-runtime`, `@babel/preset-env` when using its `useBuiltIns` option, and any \"polyfill provider\" plugin that depends on `@babel/helper-define-polyfill-provider`. No other plugins under the `@babel/` namespace are impacted, but third-party plugins might be.\r\n\r\n*Users that only compile trusted code are **not** impacted.*\r\n\r\n## Workaround\r\n\r\nUsers who are unable to upgrade the library can upgrade the affected plugins instead, to avoid triggering the vulnerable code path in affected `@babel/traverse`.\n## Remediation\nUpgrade `@babel/traverse` to version 7.23.2, 8.0.0-alpha.4 or higher.\n## References\n- [GitHub Commit](https://github.com/babel/babel/commit/b13376b346946e3f62fc0848c1d2a23223314c82)\n- [GitHub PR](https://github.com/babel/babel/pull/16033)\n- [GitHub Release](https://github.com/babel/babel/releases/tag/v7.23.2)\n- [GitHub Release](https://github.com/babel/babel/releases/tag/v8.0.0-alpha.4)\n- [PoC](https://steakenthusiast.github.io/2023/10/11/CVE-2023-45133-Finding-an-Arbitrary-Code-Execution-Vulnerability-In-Babel/)\n",
+      "epssDetails": {
+        "percentile": "0.27094",
+        "probability": "0.00095",
+        "modelVersion": "v2025.03.14"
+      },
+      "identifiers": {
+        "CVE": [
+          "CVE-2023-45133"
+        ],
+        "CWE": [
+          "CWE-184"
+        ],
+        "GHSA": [
+          "GHSA-67hx-6x53-jw92"
+        ]
+      },
+      "packageName": "@babel/traverse",
+      "proprietary": false,
+      "creationTime": "2023-10-13T06:39:08.115661Z",
+      "functions_new": [],
+      "alternativeIds": [],
+      "disclosureTime": "2023-10-12T17:48:28Z",
+      "exploitDetails": {
+        "sources": [
+          "Snyk"
+        ],
+        "maturityLevels": [
+          {
+            "type": "secondary",
+            "level": "Proof of Concept",
+            "format": "CVSSv3"
+          },
+          {
+            "type": "primary",
+            "level": "Proof of Concept",
+            "format": "CVSSv4"
+          }
+        ]
+      },
+      "packageManager": "npm",
+      "publicationTime": "2023-10-13T06:39:08.430378Z",
+      "severityBasedOn": "CVSS",
+      "modificationTime": "2024-03-11T09:54:03.083058Z",
+      "socialTrendAlert": false,
+      "severityWithCritical": "critical",
+      "from": [
+        "Solar System@6.7.6",
+        "nyc@15.1.0",
+        "istanbul-lib-instrument@4.0.3",
+        "@babel/core@7.22.20",
+        "@babel/traverse@7.22.20"
+      ],
+      "upgradePath": [
+        false,
+        "nyc@15.1.0",
+        "istanbul-lib-instrument@4.0.3",
+        "@babel/core@7.28.5",
+        "@babel/traverse@7.28.5"
+      ],
+      "isUpgradable": true,
+      "isPatchable": false,
+      "name": "@babel/traverse",
+      "version": "7.22.20"
+    },
+    {
+      "id": "SNYK-JS-BABELTRAVERSE-5962462",
+      "title": "Incomplete List of Disallowed Inputs",
+      "CVSSv3": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H/E:P",
+      "credit": [
+        "William Khem-Marquez"
+      ],
+      "semver": {
+        "vulnerable": [
+          "<7.23.2",
+          ">=8.0.0-alpha.0 <8.0.0-alpha.4"
+        ]
+      },
+      "exploit": "Proof of Concept",
+      "fixedIn": [
+        "7.23.2",
+        "8.0.0-alpha.4"
+      ],
+      "patches": [],
+      "insights": {
+        "triageAdvice": null
+      },
+      "language": "js",
+      "severity": "critical",
+      "cvssScore": 9.3,
+      "functions": [],
+      "malicious": false,
+      "isDisputed": false,
+      "moduleName": "@babel/traverse",
+      "references": [
+        {
+          "url": "https://github.com/babel/babel/commit/b13376b346946e3f62fc0848c1d2a23223314c82",
+          "title": "GitHub Commit"
+        },
+        {
+          "url": "https://github.com/babel/babel/pull/16033",
+          "title": "GitHub PR"
+        },
+        {
+          "url": "https://github.com/babel/babel/releases/tag/v7.23.2",
+          "title": "GitHub Release"
+        },
+        {
+          "url": "https://github.com/babel/babel/releases/tag/v8.0.0-alpha.4",
+          "title": "GitHub Release"
+        },
+        {
+          "url": "https://steakenthusiast.github.io/2023/10/11/CVE-2023-45133-Finding-an-Arbitrary-Code-Execution-Vulnerability-In-Babel/",
+          "title": "PoC"
+        }
+      ],
+      "cvssDetails": [
+        {
+          "assigner": "NVD",
+          "severity": "high",
+          "cvssV3Vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+          "cvssV3BaseScore": 8.8,
+          "modificationTime": "2024-03-11T09:53:43.127982Z"
+        },
+        {
+          "assigner": "Red Hat",
+          "severity": "high",
+          "cvssV3Vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+          "cvssV3BaseScore": 8.8,
+          "modificationTime": "2024-03-11T09:54:03.083058Z"
+        }
+      ],
+      "cvssSources": [
+        {
+          "type": "primary",
+          "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H/E:P",
+          "assigner": "Snyk",
+          "severity": "critical",
+          "baseScore": 9.3,
+          "cvssVersion": "3.1",
+          "modificationTime": "2024-03-06T14:09:27.066441Z"
+        },
+        {
+          "type": "secondary",
+          "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+          "assigner": "NVD",
+          "severity": "high",
+          "baseScore": 8.8,
+          "cvssVersion": "3.1",
+          "modificationTime": "2024-03-11T09:53:43.127982Z"
+        },
+        {
+          "type": "secondary",
+          "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+          "assigner": "Red Hat",
+          "severity": "high",
+          "baseScore": 8.8,
+          "cvssVersion": "3.1",
+          "modificationTime": "2024-03-11T09:54:03.083058Z"
+        }
+      ],
+      "description": "## Overview\n\nAffected versions of this package are vulnerable to Incomplete List of Disallowed Inputs when using plugins that rely on the `path.evaluate()` or `path.evaluateTruthy()` internal Babel methods. \r\n\r\n\r\n**Note:**\r\n\r\nThis is only exploitable if the attacker uses known affected plugins such as `@babel/plugin-transform-runtime`, `@babel/preset-env` when using its `useBuiltIns` option, and any \"polyfill provider\" plugin that depends on `@babel/helper-define-polyfill-provider`. No other plugins under the `@babel/` namespace are impacted, but third-party plugins might be.\r\n\r\n*Users that only compile trusted code are **not** impacted.*\r\n\r\n## Workaround\r\n\r\nUsers who are unable to upgrade the library can upgrade the affected plugins instead, to avoid triggering the vulnerable code path in affected `@babel/traverse`.\n## Remediation\nUpgrade `@babel/traverse` to version 7.23.2, 8.0.0-alpha.4 or higher.\n## References\n- [GitHub Commit](https://github.com/babel/babel/commit/b13376b346946e3f62fc0848c1d2a23223314c82)\n- [GitHub PR](https://github.com/babel/babel/pull/16033)\n- [GitHub Release](https://github.com/babel/babel/releases/tag/v7.23.2)\n- [GitHub Release](https://github.com/babel/babel/releases/tag/v8.0.0-alpha.4)\n- [PoC](https://steakenthusiast.github.io/2023/10/11/CVE-2023-45133-Finding-an-Arbitrary-Code-Execution-Vulnerability-In-Babel/)\n",
+      "epssDetails": {
+        "percentile": "0.27094",
+        "probability": "0.00095",
+        "modelVersion": "v2025.03.14"
+      },
+      "identifiers": {
+        "CVE": [
+          "CVE-2023-45133"
+        ],
+        "CWE": [
+          "CWE-184"
+        ],
+        "GHSA": [
+          "GHSA-67hx-6x53-jw92"
+        ]
+      },
+      "packageName": "@babel/traverse",
+      "proprietary": false,
+      "creationTime": "2023-10-13T06:39:08.115661Z",
+      "functions_new": [],
+      "alternativeIds": [],
+      "disclosureTime": "2023-10-12T17:48:28Z",
+      "exploitDetails": {
+        "sources": [
+          "Snyk"
+        ],
+        "maturityLevels": [
+          {
+            "type": "secondary",
+            "level": "Proof of Concept",
+            "format": "CVSSv3"
+          },
+          {
+            "type": "primary",
+            "level": "Proof of Concept",
+            "format": "CVSSv4"
+          }
+        ]
+      },
+      "packageManager": "npm",
+      "publicationTime": "2023-10-13T06:39:08.430378Z",
+      "severityBasedOn": "CVSS",
+      "modificationTime": "2024-03-11T09:54:03.083058Z",
+      "socialTrendAlert": false,
+      "severityWithCritical": "critical",
+      "from": [
+        "Solar System@6.7.6",
+        "nyc@15.1.0",
+        "istanbul-lib-instrument@4.0.3",
+        "@babel/core@7.22.20",
+        "@babel/helpers@7.22.15",
+        "@babel/traverse@7.22.20"
+      ],
+      "upgradePath": [
+        false,
+        "nyc@15.1.0",
+        "istanbul-lib-instrument@4.0.3",
+        "@babel/core@7.28.5",
+        "@babel/helpers@7.28.4"
+      ],
+      "isUpgradable": true,
+      "isPatchable": false,
+      "name": "@babel/traverse",
+      "version": "7.22.20"
+    },
+    {
+      "id": "SNYK-JS-BODYPARSER-7926860",
+      "title": "Asymmetric Resource Consumption (Amplification)",
+      "CVSSv3": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "credit": [
+        "Adam Korcz"
+      ],
+      "semver": {
+        "vulnerable": [
+          "<1.20.3"
+        ]
+      },
+      "exploit": "Not Defined",
+      "fixedIn": [
+        "1.20.3"
+      ],
+      "patches": [],
+      "insights": {
+        "triageAdvice": null
+      },
+      "language": "js",
+      "severity": "high",
+      "cvssScore": 8.2,
+      "functions": [],
+      "malicious": false,
+      "isDisputed": false,
+      "moduleName": "body-parser",
+      "references": [
+        {
+          "url": "https://github.com/expressjs/body-parser/commit/b2695c4450f06ba3b0ccf48d872a229bb41c9bce",
+          "title": "GitHub Commit"
+        }
+      ],
+      "cvssDetails": [
+        {
+          "assigner": "NVD",
+          "severity": "high",
+          "cvssV3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "cvssV3BaseScore": 7.5,
+          "modificationTime": "2024-09-21T01:11:54.393291Z"
+        },
+        {
+          "assigner": "Red Hat",
+          "severity": "high",
+          "cvssV3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "cvssV3BaseScore": 7.5,
+          "modificationTime": "2024-09-11T13:47:56.137452Z"
+        }
+      ],
+      "cvssSources": [
+        {
+          "type": "primary",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+          "assigner": "Snyk",
+          "severity": "high",
+          "baseScore": 8.2,
+          "cvssVersion": "4.0",
+          "modificationTime": "2024-09-11T11:25:10.814135Z"
+        },
+        {
+          "type": "secondary",
+          "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "assigner": "Snyk",
+          "severity": "medium",
+          "baseScore": 5.9,
+          "cvssVersion": "3.1",
+          "modificationTime": "2024-09-11T11:25:10.814135Z"
+        },
+        {
+          "type": "secondary",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "assigner": "NVD",
+          "severity": "high",
+          "baseScore": 7.5,
+          "cvssVersion": "3.1",
+          "modificationTime": "2024-09-21T01:11:54.393291Z"
+        },
+        {
+          "type": "secondary",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "assigner": "Red Hat",
+          "severity": "high",
+          "baseScore": 7.5,
+          "cvssVersion": "3.1",
+          "modificationTime": "2024-09-11T13:47:56.137452Z"
+        }
+      ],
+      "description": "## Overview\n\nAffected versions of this package are vulnerable to Asymmetric Resource Consumption (Amplification) via the `extendedparser` and `urlencoded` functions when the URL encoding process is enabled. An attacker can flood the server with a large number of specially crafted requests.\n## Remediation\nUpgrade `body-parser` to version 1.20.3 or higher.\n## References\n- [GitHub Commit](https://github.com/expressjs/body-parser/commit/b2695c4450f06ba3b0ccf48d872a229bb41c9bce)\n",
+      "epssDetails": {
+        "percentile": "0.82547",
+        "probability": "0.01873",
+        "modelVersion": "v2025.03.14"
+      },
+      "identifiers": {
+        "CVE": [
+          "CVE-2024-45590"
+        ],
+        "CWE": [
+          "CWE-405"
+        ]
+      },
+      "packageName": "body-parser",
+      "proprietary": false,
+      "creationTime": "2024-09-11T06:00:37.938252Z",
+      "functions_new": [],
+      "alternativeIds": [],
+      "disclosureTime": "2024-09-10T16:15:21Z",
+      "exploitDetails": {
+        "sources": [],
+        "maturityLevels": [
+          {
+            "type": "secondary",
+            "level": "Not Defined",
+            "format": "CVSSv3"
+          },
+          {
+            "type": "primary",
+            "level": "Not Defined",
+            "format": "CVSSv4"
+          }
+        ]
+      },
+      "packageManager": "npm",
+      "publicationTime": "2024-09-11T11:22:36.608327Z",
+      "severityBasedOn": "CVSS",
+      "modificationTime": "2024-09-21T01:11:54.393291Z",
+      "socialTrendAlert": false,
+      "severityWithCritical": "high",
+      "from": [
+        "Solar System@6.7.6",
+        "express@4.18.2",
+        "body-parser@1.20.1"
+      ],
+      "upgradePath": [
+        false,
+        "express@4.20.0",
+        "body-parser@1.20.3"
+      ],
+      "isUpgradable": true,
+      "isPatchable": false,
+      "name": "body-parser",
+      "version": "1.20.1"
+    },
+    {
+      "id": "SNYK-JS-CROSSSPAWN-8303230",
+      "title": "Regular Expression Denial of Service (ReDoS)",
+      "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:P",
+      "credit": [
+        "Rongchen Li"
+      ],
+      "semver": {
+        "vulnerable": [
+          "<6.0.6",
+          ">=7.0.0 <7.0.5"
+        ]
+      },
+      "exploit": "Proof of Concept",
+      "fixedIn": [
+        "6.0.6",
+        "7.0.5"
+      ],
+      "patches": [],
+      "insights": {
+        "triageAdvice": null
+      },
+      "language": "js",
+      "severity": "high",
+      "cvssScore": 8.7,
+      "functions": [],
+      "malicious": false,
+      "isDisputed": false,
+      "moduleName": "cross-spawn",
+      "references": [
+        {
+          "url": "https://github.com/moxystudio/node-cross-spawn/commit/5ff3a07d9add449021d806e45c4168203aa833ff",
+          "title": "GitHub Commit"
+        },
+        {
+          "url": "https://github.com/moxystudio/node-cross-spawn/commit/640d391fde65388548601d95abedccc12943374f",
+          "title": "GitHub Commit"
+        },
+        {
+          "url": "https://github.com/moxystudio/node-cross-spawn/pull/160",
+          "title": "GitHub PR"
+        }
+      ],
+      "cvssDetails": [
+        {
+          "assigner": "Red Hat",
+          "severity": "medium",
+          "cvssV3Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:R/S:U/C:N/I:N/A:H",
+          "cvssV3BaseScore": 4.4,
+          "modificationTime": "2024-11-26T13:35:49.870515Z"
+        },
+        {
+          "assigner": "SUSE",
+          "severity": "medium",
+          "cvssV3Vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+          "cvssV3BaseScore": 5.5,
+          "modificationTime": "2024-12-12T11:03:12.776792Z"
+        }
+      ],
+      "cvssSources": [
+        {
+          "type": "primary",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:P",
+          "assigner": "Snyk",
+          "severity": "high",
+          "baseScore": 8.7,
+          "cvssVersion": "4.0",
+          "modificationTime": "2025-05-19T03:13:16.904167Z"
+        },
+        {
+          "type": "secondary",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:P",
+          "assigner": "Snyk",
+          "severity": "high",
+          "baseScore": 7.5,
+          "cvssVersion": "3.1",
+          "modificationTime": "2025-05-19T03:13:16.904167Z"
+        },
+        {
+          "type": "secondary",
+          "vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:R/S:U/C:N/I:N/A:H",
+          "assigner": "Red Hat",
+          "severity": "medium",
+          "baseScore": 4.4,
+          "cvssVersion": "3.1",
+          "modificationTime": "2024-11-26T13:35:49.870515Z"
+        },
+        {
+          "type": "secondary",
+          "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+          "assigner": "SUSE",
+          "severity": "medium",
+          "baseScore": 5.5,
+          "cvssVersion": "3.1",
+          "modificationTime": "2024-12-12T11:03:12.776792Z"
+        }
+      ],
+      "description": "## Overview\n\nAffected versions of this package are vulnerable to Regular Expression Denial of Service (ReDoS) due to improper input sanitization. An attacker can increase the CPU usage and crash the program by crafting a very large and well crafted string.\n## PoC\n```javascript\r\nconst { argument } = require('cross-spawn/lib/util/escape');\r\nvar str = \"\";\r\nfor (var i = 0; i < 1000000; i++) {\r\n  str += \"\\\\\";\r\n}\r\nstr += \"◎\";\r\n\r\nconsole.log(\"start\")\r\nargument(str)\r\nconsole.log(\"end\")\r\n\r\n// run `npm install cross-spawn` and `node attack.js` \r\n// then the program will stuck forever with high CPU usage\r\n```\n\n## Details\n\nDenial of Service (DoS) describes a family of attacks, all aimed at making a system inaccessible to its original and legitimate users. There are many types of DoS attacks, ranging from trying to clog the network pipes to the system by generating a large volume of traffic from many machines (a Distributed Denial of Service - DDoS - attack) to sending crafted requests that cause a system to crash or take a disproportional amount of time to process.\n\nThe Regular expression Denial of Service (ReDoS) is a type of Denial of Service attack. Regular expressions are incredibly powerful, but they aren't very intuitive and can ultimately end up making it easy for attackers to take your site down.\n\nLet’s take the following regular expression as an example:\n```js\nregex = /A(B|C+)+D/\n```\n\nThis regular expression accomplishes the following:\n- `A` The string must start with the letter 'A'\n- `(B|C+)+` The string must then follow the letter A with either the letter 'B' or some number of occurrences of the letter 'C' (the `+` matches one or more times). The `+` at the end of this section states that we can look for one or more matches of this section.\n- `D` Finally, we ensure this section of the string ends with a 'D'\n\nThe expression would match inputs such as `ABBD`, `ABCCCCD`, `ABCBCCCD` and `ACCCCCD`\n\nIt most cases, it doesn't take very long for a regex engine to find a match:\n\n```bash\n$ time node -e '/A(B|C+)+D/.test(\"ACCCCCCCCCCCCCCCCCCCCCCCCCCCCD\")'\n0.04s user 0.01s system 95% cpu 0.052 total\n\n$ time node -e '/A(B|C+)+D/.test(\"ACCCCCCCCCCCCCCCCCCCCCCCCCCCCX\")'\n1.79s user 0.02s system 99% cpu 1.812 total\n```\n\nThe entire process of testing it against a 30 characters long string takes around ~52ms. But when given an invalid string, it takes nearly two seconds to complete the test, over ten times as long as it took to test a valid string. The dramatic difference is due to the way regular expressions get evaluated.\n\nMost Regex engines will work very similarly (with minor differences). The engine will match the first possible way to accept the current character and proceed to the next one. If it then fails to match the next one, it will backtrack and see if there was another way to digest the previous character. If it goes too far down the rabbit hole only to find out the string doesn’t match in the end, and if many characters have multiple valid regex paths, the number of backtracking steps can become very large, resulting in what is known as _catastrophic backtracking_.\n\nLet's look at how our expression runs into this problem, using a shorter string: \"ACCCX\". While it seems fairly straightforward, there are still four different ways that the engine could match those three C's:\n1. CCC\n2. CC+C\n3. C+CC\n4. C+C+C.\n\nThe engine has to try each of those combinations to see if any of them potentially match against the expression. When you combine that with the other steps the engine must take, we can use [RegEx 101 debugger](https://regex101.com/debugger) to see the engine has to take a total of 38 steps before it can determine the string doesn't match.\n\nFrom there, the number of steps the engine must use to validate a string just continues to grow.\n\n| String | Number of C's | Number of steps |\n| -------|-------------:| -----:|\n| ACCCX | 3 | 38\n| ACCCCX | 4 | 71\n| ACCCCCX | 5 | 136\n| ACCCCCCCCCCCCCCX | 14 | 65,553\n\n\nBy the time the string includes 14 C's, the engine has to take over 65,000 steps just to see if the string is valid. These extreme situations can cause them to work very slowly (exponentially related to input size, as shown above), allowing an attacker to exploit this and can cause the service to excessively consume CPU, resulting in a Denial of Service.\n\n## Remediation\nUpgrade `cross-spawn` to version 6.0.6, 7.0.5 or higher.\n## References\n- [GitHub Commit](https://github.com/moxystudio/node-cross-spawn/commit/5ff3a07d9add449021d806e45c4168203aa833ff)\n- [GitHub Commit](https://github.com/moxystudio/node-cross-spawn/commit/640d391fde65388548601d95abedccc12943374f)\n- [GitHub PR](https://github.com/moxystudio/node-cross-spawn/pull/160)\n",
+      "epssDetails": {
+        "percentile": "0.32984",
+        "probability": "0.00129",
+        "modelVersion": "v2025.03.14"
+      },
+      "identifiers": {
+        "CVE": [
+          "CVE-2024-21538"
+        ],
+        "CWE": [
+          "CWE-1333"
+        ]
+      },
+      "packageName": "cross-spawn",
+      "proprietary": true,
+      "creationTime": "2024-10-24T14:00:39.760442Z",
+      "functions_new": [],
+      "alternativeIds": [],
+      "disclosureTime": "2024-10-24T06:04:14Z",
+      "exploitDetails": {
+        "sources": [
+          "Snyk"
+        ],
+        "maturityLevels": [
+          {
+            "type": "secondary",
+            "level": "Proof of Concept",
+            "format": "CVSSv3"
+          },
+          {
+            "type": "primary",
+            "level": "Proof of Concept",
+            "format": "CVSSv4"
+          }
+        ]
+      },
+      "packageManager": "npm",
+      "publicationTime": "2024-11-07T14:07:29.496832Z",
+      "severityBasedOn": "CVSS",
+      "modificationTime": "2025-05-19T03:13:16.904167Z",
+      "socialTrendAlert": false,
+      "severityWithCritical": "high",
+      "from": [
+        "Solar System@6.7.6",
+        "nyc@15.1.0",
+        "foreground-child@2.0.0",
+        "cross-spawn@7.0.3"
+      ],
+      "upgradePath": [
+        false,
+        "nyc@15.1.0",
+        "foreground-child@2.0.0",
+        "cross-spawn@7.0.6"
+      ],
+      "isUpgradable": true,
+      "isPatchable": false,
+      "name": "cross-spawn",
+      "version": "7.0.3"
+    },
+    {
+      "id": "SNYK-JS-CROSSSPAWN-8303230",
+      "title": "Regular Expression Denial of Service (ReDoS)",
+      "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:P",
+      "credit": [
+        "Rongchen Li"
+      ],
+      "semver": {
+        "vulnerable": [
+          "<6.0.6",
+          ">=7.0.0 <7.0.5"
+        ]
+      },
+      "exploit": "Proof of Concept",
+      "fixedIn": [
+        "6.0.6",
+        "7.0.5"
+      ],
+      "patches": [],
+      "insights": {
+        "triageAdvice": null
+      },
+      "language": "js",
+      "severity": "high",
+      "cvssScore": 8.7,
+      "functions": [],
+      "malicious": false,
+      "isDisputed": false,
+      "moduleName": "cross-spawn",
+      "references": [
+        {
+          "url": "https://github.com/moxystudio/node-cross-spawn/commit/5ff3a07d9add449021d806e45c4168203aa833ff",
+          "title": "GitHub Commit"
+        },
+        {
+          "url": "https://github.com/moxystudio/node-cross-spawn/commit/640d391fde65388548601d95abedccc12943374f",
+          "title": "GitHub Commit"
+        },
+        {
+          "url": "https://github.com/moxystudio/node-cross-spawn/pull/160",
+          "title": "GitHub PR"
+        }
+      ],
+      "cvssDetails": [
+        {
+          "assigner": "Red Hat",
+          "severity": "medium",
+          "cvssV3Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:R/S:U/C:N/I:N/A:H",
+          "cvssV3BaseScore": 4.4,
+          "modificationTime": "2024-11-26T13:35:49.870515Z"
+        },
+        {
+          "assigner": "SUSE",
+          "severity": "medium",
+          "cvssV3Vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+          "cvssV3BaseScore": 5.5,
+          "modificationTime": "2024-12-12T11:03:12.776792Z"
+        }
+      ],
+      "cvssSources": [
+        {
+          "type": "primary",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:P",
+          "assigner": "Snyk",
+          "severity": "high",
+          "baseScore": 8.7,
+          "cvssVersion": "4.0",
+          "modificationTime": "2025-05-19T03:13:16.904167Z"
+        },
+        {
+          "type": "secondary",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:P",
+          "assigner": "Snyk",
+          "severity": "high",
+          "baseScore": 7.5,
+          "cvssVersion": "3.1",
+          "modificationTime": "2025-05-19T03:13:16.904167Z"
+        },
+        {
+          "type": "secondary",
+          "vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:R/S:U/C:N/I:N/A:H",
+          "assigner": "Red Hat",
+          "severity": "medium",
+          "baseScore": 4.4,
+          "cvssVersion": "3.1",
+          "modificationTime": "2024-11-26T13:35:49.870515Z"
+        },
+        {
+          "type": "secondary",
+          "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+          "assigner": "SUSE",
+          "severity": "medium",
+          "baseScore": 5.5,
+          "cvssVersion": "3.1",
+          "modificationTime": "2024-12-12T11:03:12.776792Z"
+        }
+      ],
+      "description": "## Overview\n\nAffected versions of this package are vulnerable to Regular Expression Denial of Service (ReDoS) due to improper input sanitization. An attacker can increase the CPU usage and crash the program by crafting a very large and well crafted string.\n## PoC\n```javascript\r\nconst { argument } = require('cross-spawn/lib/util/escape');\r\nvar str = \"\";\r\nfor (var i = 0; i < 1000000; i++) {\r\n  str += \"\\\\\";\r\n}\r\nstr += \"◎\";\r\n\r\nconsole.log(\"start\")\r\nargument(str)\r\nconsole.log(\"end\")\r\n\r\n// run `npm install cross-spawn` and `node attack.js` \r\n// then the program will stuck forever with high CPU usage\r\n```\n\n## Details\n\nDenial of Service (DoS) describes a family of attacks, all aimed at making a system inaccessible to its original and legitimate users. There are many types of DoS attacks, ranging from trying to clog the network pipes to the system by generating a large volume of traffic from many machines (a Distributed Denial of Service - DDoS - attack) to sending crafted requests that cause a system to crash or take a disproportional amount of time to process.\n\nThe Regular expression Denial of Service (ReDoS) is a type of Denial of Service attack. Regular expressions are incredibly powerful, but they aren't very intuitive and can ultimately end up making it easy for attackers to take your site down.\n\nLet’s take the following regular expression as an example:\n```js\nregex = /A(B|C+)+D/\n```\n\nThis regular expression accomplishes the following:\n- `A` The string must start with the letter 'A'\n- `(B|C+)+` The string must then follow the letter A with either the letter 'B' or some number of occurrences of the letter 'C' (the `+` matches one or more times). The `+` at the end of this section states that we can look for one or more matches of this section.\n- `D` Finally, we ensure this section of the string ends with a 'D'\n\nThe expression would match inputs such as `ABBD`, `ABCCCCD`, `ABCBCCCD` and `ACCCCCD`\n\nIt most cases, it doesn't take very long for a regex engine to find a match:\n\n```bash\n$ time node -e '/A(B|C+)+D/.test(\"ACCCCCCCCCCCCCCCCCCCCCCCCCCCCD\")'\n0.04s user 0.01s system 95% cpu 0.052 total\n\n$ time node -e '/A(B|C+)+D/.test(\"ACCCCCCCCCCCCCCCCCCCCCCCCCCCCX\")'\n1.79s user 0.02s system 99% cpu 1.812 total\n```\n\nThe entire process of testing it against a 30 characters long string takes around ~52ms. But when given an invalid string, it takes nearly two seconds to complete the test, over ten times as long as it took to test a valid string. The dramatic difference is due to the way regular expressions get evaluated.\n\nMost Regex engines will work very similarly (with minor differences). The engine will match the first possible way to accept the current character and proceed to the next one. If it then fails to match the next one, it will backtrack and see if there was another way to digest the previous character. If it goes too far down the rabbit hole only to find out the string doesn’t match in the end, and if many characters have multiple valid regex paths, the number of backtracking steps can become very large, resulting in what is known as _catastrophic backtracking_.\n\nLet's look at how our expression runs into this problem, using a shorter string: \"ACCCX\". While it seems fairly straightforward, there are still four different ways that the engine could match those three C's:\n1. CCC\n2. CC+C\n3. C+CC\n4. C+C+C.\n\nThe engine has to try each of those combinations to see if any of them potentially match against the expression. When you combine that with the other steps the engine must take, we can use [RegEx 101 debugger](https://regex101.com/debugger) to see the engine has to take a total of 38 steps before it can determine the string doesn't match.\n\nFrom there, the number of steps the engine must use to validate a string just continues to grow.\n\n| String | Number of C's | Number of steps |\n| -------|-------------:| -----:|\n| ACCCX | 3 | 38\n| ACCCCX | 4 | 71\n| ACCCCCX | 5 | 136\n| ACCCCCCCCCCCCCCX | 14 | 65,553\n\n\nBy the time the string includes 14 C's, the engine has to take over 65,000 steps just to see if the string is valid. These extreme situations can cause them to work very slowly (exponentially related to input size, as shown above), allowing an attacker to exploit this and can cause the service to excessively consume CPU, resulting in a Denial of Service.\n\n## Remediation\nUpgrade `cross-spawn` to version 6.0.6, 7.0.5 or higher.\n## References\n- [GitHub Commit](https://github.com/moxystudio/node-cross-spawn/commit/5ff3a07d9add449021d806e45c4168203aa833ff)\n- [GitHub Commit](https://github.com/moxystudio/node-cross-spawn/commit/640d391fde65388548601d95abedccc12943374f)\n- [GitHub PR](https://github.com/moxystudio/node-cross-spawn/pull/160)\n",
+      "epssDetails": {
+        "percentile": "0.32984",
+        "probability": "0.00129",
+        "modelVersion": "v2025.03.14"
+      },
+      "identifiers": {
+        "CVE": [
+          "CVE-2024-21538"
+        ],
+        "CWE": [
+          "CWE-1333"
+        ]
+      },
+      "packageName": "cross-spawn",
+      "proprietary": true,
+      "creationTime": "2024-10-24T14:00:39.760442Z",
+      "functions_new": [],
+      "alternativeIds": [],
+      "disclosureTime": "2024-10-24T06:04:14Z",
+      "exploitDetails": {
+        "sources": [
+          "Snyk"
+        ],
+        "maturityLevels": [
+          {
+            "type": "secondary",
+            "level": "Proof of Concept",
+            "format": "CVSSv3"
+          },
+          {
+            "type": "primary",
+            "level": "Proof of Concept",
+            "format": "CVSSv4"
+          }
+        ]
+      },
+      "packageManager": "npm",
+      "publicationTime": "2024-11-07T14:07:29.496832Z",
+      "severityBasedOn": "CVSS",
+      "modificationTime": "2025-05-19T03:13:16.904167Z",
+      "socialTrendAlert": false,
+      "severityWithCritical": "high",
+      "from": [
+        "Solar System@6.7.6",
+        "nyc@15.1.0",
+        "istanbul-lib-processinfo@2.0.3",
+        "cross-spawn@7.0.3"
+      ],
+      "upgradePath": [
+        false,
+        "nyc@15.1.0",
+        "istanbul-lib-processinfo@2.0.3",
+        "cross-spawn@7.0.6"
+      ],
+      "isUpgradable": true,
+      "isPatchable": false,
+      "name": "cross-spawn",
+      "version": "7.0.3"
+    },
+    {
+      "id": "SNYK-JS-MONGOOSE-8446504",
+      "title": "Improper Neutralization of Special Elements in Data Query Logic",
+      "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N/E:P",
+      "credit": [
+        "Unknown"
+      ],
+      "semver": {
+        "vulnerable": [
+          "<6.13.5",
+          ">=7.0.0 <7.8.3",
+          ">=8.0.0 <8.8.3"
+        ]
+      },
+      "exploit": "Proof of Concept",
+      "fixedIn": [
+        "6.13.5",
+        "7.8.3",
+        "8.8.3"
+      ],
+      "patches": [],
+      "insights": {
+        "triageAdvice": null
+      },
+      "language": "js",
+      "severity": "high",
+      "cvssScore": 8.7,
+      "functions": [],
+      "malicious": false,
+      "isDisputed": false,
+      "moduleName": "mongoose",
+      "references": [
+        {
+          "url": "https://github.com/Automattic/mongoose/commit/33679bcf8ca43d74e3e8ecd4cc224826772d805b",
+          "title": "GitHub Commit"
+        },
+        {
+          "url": "https://github.com/Automattic/mongoose/commit/c9e86bff7eef477da75a29af62a06d41a835a156",
+          "title": "GitHub Commit"
+        },
+        {
+          "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/cves/2024/CVE-2024-53900.yaml",
+          "title": "Nuclei Templates"
+        }
+      ],
+      "cvssDetails": [],
+      "cvssSources": [
+        {
+          "type": "primary",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:P",
+          "assigner": "Snyk",
+          "severity": "high",
+          "baseScore": 8.7,
+          "cvssVersion": "4.0",
+          "modificationTime": "2024-12-18T09:04:06.143584Z"
+        },
+        {
+          "type": "secondary",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N/E:P",
+          "assigner": "Snyk",
+          "severity": "high",
+          "baseScore": 7.5,
+          "cvssVersion": "3.1",
+          "modificationTime": "2024-12-18T09:04:06.143584Z"
+        }
+      ],
+      "description": "## Overview\n[mongoose](https://www.npmjs.com/package/mongoose) is a Mongoose is a MongoDB object modeling tool designed to work in an asynchronous environment.\n\nAffected versions of this package are vulnerable to Improper Neutralization of Special Elements in Data Query Logic due to the improper handling of `$where` in match queries. An attacker can manipulate search queries to inject malicious code.\n## Remediation\nUpgrade `mongoose` to version 6.13.5, 7.8.3, 8.8.3 or higher.\n## References\n- [GitHub Commit](https://github.com/Automattic/mongoose/commit/33679bcf8ca43d74e3e8ecd4cc224826772d805b)\n- [GitHub Commit](https://github.com/Automattic/mongoose/commit/c9e86bff7eef477da75a29af62a06d41a835a156)\n- [Nuclei Templates](https://github.com/projectdiscovery/nuclei-templates/blob/main/http/cves/2024/CVE-2024-53900.yaml)\n",
+      "epssDetails": {
+        "percentile": "0.97286",
+        "probability": "0.42226",
+        "modelVersion": "v2025.03.14"
+      },
+      "identifiers": {
+        "CVE": [
+          "CVE-2024-53900"
+        ],
+        "CWE": [
+          "CWE-943"
+        ],
+        "GHSA": [
+          "GHSA-m7xq-9374-9rvx"
+        ]
+      },
+      "packageName": "mongoose",
+      "proprietary": false,
+      "creationTime": "2024-12-03T09:42:30.345624Z",
+      "functions_new": [],
+      "alternativeIds": [],
+      "disclosureTime": "2024-12-02T21:31:20Z",
+      "exploitDetails": {
+        "sources": [
+          "Nuclei Templates"
+        ],
+        "maturityLevels": [
+          {
+            "type": "secondary",
+            "level": "Proof of Concept",
+            "format": "CVSSv3"
+          },
+          {
+            "type": "primary",
+            "level": "Proof of Concept",
+            "format": "CVSSv4"
+          }
+        ]
+      },
+      "packageManager": "npm",
+      "publicationTime": "2024-12-03T09:53:38.662808Z",
+      "severityBasedOn": "CVSS",
+      "modificationTime": "2025-12-02T05:03:54.780750Z",
+      "socialTrendAlert": false,
+      "severityWithCritical": "high",
+      "from": [
+        "Solar System@6.7.6",
+        "mongoose@6.12.0"
+      ],
+      "upgradePath": [
+        false,
+        "mongoose@6.13.5"
+      ],
+      "isUpgradable": true,
+      "isPatchable": false,
+      "name": "mongoose",
+      "version": "6.12.0"
+    },
+    {
+      "id": "SNYK-JS-MONGOOSE-8623536",
+      "title": "Improper Neutralization of Special Elements in Data Query Logic",
+      "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H/E:P",
+      "credit": [
+        "Unknown"
+      ],
+      "semver": {
+        "vulnerable": [
+          "<6.13.6",
+          ">=7.0.0 <7.8.4",
+          ">=8.0.0 <8.9.5"
+        ]
+      },
+      "exploit": "Proof of Concept",
+      "fixedIn": [
+        "6.13.6",
+        "7.8.4",
+        "8.9.5"
+      ],
+      "patches": [],
+      "insights": {
+        "triageAdvice": null
+      },
+      "language": "js",
+      "severity": "high",
+      "cvssScore": 8.7,
+      "functions": [],
+      "malicious": false,
+      "isDisputed": false,
+      "moduleName": "mongoose",
+      "references": [
+        {
+          "url": "https://github.com/Automattic/mongoose/commit/64a9f9706f2428c49e0cfb8e223065acc645f7bc",
+          "title": "GitHub Commit"
+        },
+        {
+          "url": "https://github.com/Automattic/mongoose/releases/tag/6.13.6",
+          "title": "GitHub Release"
+        },
+        {
+          "url": "https://github.com/Automattic/mongoose/releases/tag/7.8.4",
+          "title": "GitHub Release"
+        },
+        {
+          "url": "https://github.com/Automattic/mongoose/releases/tag/8.9.5",
+          "title": "GitHub Release"
+        },
+        {
+          "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/cves/2025/CVE-2025-23061.yaml",
+          "title": "Nuclei Templates"
+        }
+      ],
+      "cvssDetails": [
+        {
+          "assigner": "NVD",
+          "severity": "critical",
+          "cvssV3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cvssV3BaseScore": 9.8,
+          "modificationTime": "2025-10-03T13:13:35.990180Z"
+        }
+      ],
+      "cvssSources": [
+        {
+          "type": "primary",
+          "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:P",
+          "assigner": "Snyk",
+          "severity": "high",
+          "baseScore": 8.7,
+          "cvssVersion": "4.0",
+          "modificationTime": "2025-10-03T13:26:26.184478Z"
+        },
+        {
+          "type": "secondary",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H/E:P",
+          "assigner": "Snyk",
+          "severity": "critical",
+          "baseScore": 9.8,
+          "cvssVersion": "3.1",
+          "modificationTime": "2025-10-03T13:26:26.184478Z"
+        },
+        {
+          "type": "secondary",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "assigner": "NVD",
+          "severity": "critical",
+          "baseScore": 9.8,
+          "cvssVersion": "3.1",
+          "modificationTime": "2025-10-03T13:13:35.990180Z"
+        }
+      ],
+      "description": "## Overview\n[mongoose](https://www.npmjs.com/package/mongoose) is a Mongoose is a MongoDB object modeling tool designed to work in an asynchronous environment.\n\nAffected versions of this package are vulnerable to Improper Neutralization of Special Elements in Data Query Logic due to the improper use of a `$where` filter in conjunction with the `populate()` match. An attacker can manipulate search queries to retrieve or alter information without proper authorization by injecting malicious input into the query.\r\n\r\n**Note:**\r\nThis vulnerability derives from an incomplete fix of [CVE-2024-53900](https://security.snyk.io/vuln/SNYK-JS-MONGOOSE-8446504)\n## Remediation\nUpgrade `mongoose` to version 6.13.6, 7.8.4, 8.9.5 or higher.\n## References\n- [GitHub Commit](https://github.com/Automattic/mongoose/commit/64a9f9706f2428c49e0cfb8e223065acc645f7bc)\n- [GitHub Release](https://github.com/Automattic/mongoose/releases/tag/6.13.6)\n- [GitHub Release](https://github.com/Automattic/mongoose/releases/tag/7.8.4)\n- [GitHub Release](https://github.com/Automattic/mongoose/releases/tag/8.9.5)\n- [Nuclei Templates](https://github.com/projectdiscovery/nuclei-templates/blob/main/http/cves/2025/CVE-2025-23061.yaml)\n",
+      "epssDetails": {
+        "percentile": "0.98680",
+        "probability": "0.72130",
+        "modelVersion": "v2025.03.14"
+      },
+      "identifiers": {
+        "CVE": [
+          "CVE-2025-23061"
+        ],
+        "CWE": [
+          "CWE-943"
+        ]
+      },
+      "packageName": "mongoose",
+      "proprietary": false,
+      "creationTime": "2025-01-15T12:10:58.127857Z",
+      "functions_new": [],
+      "alternativeIds": [],
+      "disclosureTime": "2025-01-15T04:45:12Z",
+      "exploitDetails": {
+        "sources": [
+          "Nuclei Templates"
+        ],
+        "maturityLevels": [
+          {
+            "type": "secondary",
+            "level": "Proof of Concept",
+            "format": "CVSSv3"
+          },
+          {
+            "type": "primary",
+            "level": "Proof of Concept",
+            "format": "CVSSv4"
+          }
+        ]
+      },
+      "packageManager": "npm",
+      "publicationTime": "2025-01-15T12:10:58.358749Z",
+      "severityBasedOn": "CVSS",
+      "modificationTime": "2025-12-02T05:03:45.781116Z",
+      "socialTrendAlert": false,
+      "severityWithCritical": "high",
+      "from": [
+        "Solar System@6.7.6",
+        "mongoose@6.12.0"
+      ],
+      "upgradePath": [
+        false,
+        "mongoose@6.13.6"
+      ],
+      "isUpgradable": true,
+      "isPatchable": false,
+      "name": "mongoose",
+      "version": "6.12.0"
+    }
+  ],
+  "ok": false,
+  "dependencyCount": 325,
+  "org": "i221669",
+  "policy": "# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.\nversion: v1.25.1\nignore: {}\npatch: {}\n",
+  "isPrivate": true,
+  "licensesPolicy": {
+    "severities": {},
+    "orgLicenseRules": {
+      "AGPL-1.0": {
+        "licenseType": "AGPL-1.0",
+        "severity": "high",
+        "instructions": ""
+      },
+      "AGPL-3.0": {
+        "licenseType": "AGPL-3.0",
+        "severity": "high",
+        "instructions": ""
+      },
+      "Artistic-1.0": {
+        "licenseType": "Artistic-1.0",
+        "severity": "medium",
+        "instructions": ""
+      },
+      "Artistic-2.0": {
+        "licenseType": "Artistic-2.0",
+        "severity": "medium",
+        "instructions": ""
+      },
+      "CDDL-1.0": {
+        "licenseType": "CDDL-1.0",
+        "severity": "medium",
+        "instructions": ""
+      },
+      "CPOL-1.02": {
+        "licenseType": "CPOL-1.02",
+        "severity": "high",
+        "instructions": ""
+      },
+      "EPL-1.0": {
+        "licenseType": "EPL-1.0",
+        "severity": "medium",
+        "instructions": ""
+      },
+      "GPL-2.0": {
+        "licenseType": "GPL-2.0",
+        "severity": "high",
+        "instructions": ""
+      },
+      "GPL-3.0": {
+        "licenseType": "GPL-3.0",
+        "severity": "high",
+        "instructions": ""
+      },
+      "LGPL-2.0": {
+        "licenseType": "LGPL-2.0",
+        "severity": "medium",
+        "instructions": ""
+      },
+      "LGPL-2.1": {
+        "licenseType": "LGPL-2.1",
+        "severity": "medium",
+        "instructions": ""
+      },
+      "LGPL-3.0": {
+        "licenseType": "LGPL-3.0",
+        "severity": "medium",
+        "instructions": ""
+      },
+      "MPL-1.1": {
+        "licenseType": "MPL-1.1",
+        "severity": "medium",
+        "instructions": ""
+      },
+      "MPL-2.0": {
+        "licenseType": "MPL-2.0",
+        "severity": "medium",
+        "instructions": ""
+      },
+      "MS-RL": {
+        "licenseType": "MS-RL",
+        "severity": "medium",
+        "instructions": ""
+      },
+      "SimPL-2.0": {
+        "licenseType": "SimPL-2.0",
+        "severity": "high",
+        "instructions": ""
+      }
+    }
+  },
+  "packageManager": "npm",
+  "ignoreSettings": {
+    "adminOnly": false,
+    "reasonRequired": false,
+    "disregardFilesystemIgnores": false
+  },
+  "summary": "7 high or critical severity vulnerable dependency paths",
+  "severityThreshold": "high",
+  "remediation": {
+    "unresolved": [
+      {
+        "id": "SNYK-JS-BABELTRAVERSE-5962462",
+        "title": "Incomplete List of Disallowed Inputs",
+        "CVSSv3": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H/E:P",
+        "credit": [
+          "William Khem-Marquez"
+        ],
+        "semver": {
+          "vulnerable": [
+            "<7.23.2",
+            ">=8.0.0-alpha.0 <8.0.0-alpha.4"
+          ]
+        },
+        "exploit": "Proof of Concept",
+        "fixedIn": [
+          "7.23.2",
+          "8.0.0-alpha.4"
+        ],
+        "patches": [],
+        "insights": {
+          "triageAdvice": null
+        },
+        "language": "js",
+        "severity": "critical",
+        "cvssScore": 9.3,
+        "functions": [],
+        "malicious": false,
+        "isDisputed": false,
+        "moduleName": "@babel/traverse",
+        "references": [
+          {
+            "url": "https://github.com/babel/babel/commit/b13376b346946e3f62fc0848c1d2a23223314c82",
+            "title": "GitHub Commit"
+          },
+          {
+            "url": "https://github.com/babel/babel/pull/16033",
+            "title": "GitHub PR"
+          },
+          {
+            "url": "https://github.com/babel/babel/releases/tag/v7.23.2",
+            "title": "GitHub Release"
+          },
+          {
+            "url": "https://github.com/babel/babel/releases/tag/v8.0.0-alpha.4",
+            "title": "GitHub Release"
+          },
+          {
+            "url": "https://steakenthusiast.github.io/2023/10/11/CVE-2023-45133-Finding-an-Arbitrary-Code-Execution-Vulnerability-In-Babel/",
+            "title": "PoC"
+          }
+        ],
+        "cvssDetails": [
+          {
+            "assigner": "NVD",
+            "severity": "high",
+            "cvssV3Vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+            "cvssV3BaseScore": 8.8,
+            "modificationTime": "2024-03-11T09:53:43.127982Z"
+          },
+          {
+            "assigner": "Red Hat",
+            "severity": "high",
+            "cvssV3Vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+            "cvssV3BaseScore": 8.8,
+            "modificationTime": "2024-03-11T09:54:03.083058Z"
+          }
+        ],
+        "cvssSources": [
+          {
+            "type": "primary",
+            "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H/E:P",
+            "assigner": "Snyk",
+            "severity": "critical",
+            "baseScore": 9.3,
+            "cvssVersion": "3.1",
+            "modificationTime": "2024-03-06T14:09:27.066441Z"
+          },
+          {
+            "type": "secondary",
+            "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+            "assigner": "NVD",
+            "severity": "high",
+            "baseScore": 8.8,
+            "cvssVersion": "3.1",
+            "modificationTime": "2024-03-11T09:53:43.127982Z"
+          },
+          {
+            "type": "secondary",
+            "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+            "assigner": "Red Hat",
+            "severity": "high",
+            "baseScore": 8.8,
+            "cvssVersion": "3.1",
+            "modificationTime": "2024-03-11T09:54:03.083058Z"
+          }
+        ],
+        "description": "## Overview\n\nAffected versions of this package are vulnerable to Incomplete List of Disallowed Inputs when using plugins that rely on the `path.evaluate()` or `path.evaluateTruthy()` internal Babel methods. \r\n\r\n\r\n**Note:**\r\n\r\nThis is only exploitable if the attacker uses known affected plugins such as `@babel/plugin-transform-runtime`, `@babel/preset-env` when using its `useBuiltIns` option, and any \"polyfill provider\" plugin that depends on `@babel/helper-define-polyfill-provider`. No other plugins under the `@babel/` namespace are impacted, but third-party plugins might be.\r\n\r\n*Users that only compile trusted code are **not** impacted.*\r\n\r\n## Workaround\r\n\r\nUsers who are unable to upgrade the library can upgrade the affected plugins instead, to avoid triggering the vulnerable code path in affected `@babel/traverse`.\n## Remediation\nUpgrade `@babel/traverse` to version 7.23.2, 8.0.0-alpha.4 or higher.\n## References\n- [GitHub Commit](https://github.com/babel/babel/commit/b13376b346946e3f62fc0848c1d2a23223314c82)\n- [GitHub PR](https://github.com/babel/babel/pull/16033)\n- [GitHub Release](https://github.com/babel/babel/releases/tag/v7.23.2)\n- [GitHub Release](https://github.com/babel/babel/releases/tag/v8.0.0-alpha.4)\n- [PoC](https://steakenthusiast.github.io/2023/10/11/CVE-2023-45133-Finding-an-Arbitrary-Code-Execution-Vulnerability-In-Babel/)\n",
+        "epssDetails": {
+          "percentile": "0.27094",
+          "probability": "0.00095",
+          "modelVersion": "v2025.03.14"
+        },
+        "identifiers": {
+          "CVE": [
+            "CVE-2023-45133"
+          ],
+          "CWE": [
+            "CWE-184"
+          ],
+          "GHSA": [
+            "GHSA-67hx-6x53-jw92"
+          ]
+        },
+        "packageName": "@babel/traverse",
+        "proprietary": false,
+        "creationTime": "2023-10-13T06:39:08.115661Z",
+        "functions_new": [],
+        "alternativeIds": [],
+        "disclosureTime": "2023-10-12T17:48:28Z",
+        "exploitDetails": {
+          "sources": [
+            "Snyk"
+          ],
+          "maturityLevels": [
+            {
+              "type": "secondary",
+              "level": "Proof of Concept",
+              "format": "CVSSv3"
+            },
+            {
+              "type": "primary",
+              "level": "Proof of Concept",
+              "format": "CVSSv4"
+            }
+          ]
+        },
+        "packageManager": "npm",
+        "publicationTime": "2023-10-13T06:39:08.430378Z",
+        "severityBasedOn": "CVSS",
+        "modificationTime": "2024-03-11T09:54:03.083058Z",
+        "socialTrendAlert": false,
+        "packagePopularityRank": 99,
+        "from": [
+          "Solar System@6.7.6",
+          "nyc@15.1.0",
+          "istanbul-lib-instrument@4.0.3",
+          "@babel/core@7.22.20",
+          "@babel/helpers@7.22.15",
+          "@babel/traverse@7.22.20"
+        ],
+        "upgradePath": [
+          false,
+          "nyc@15.1.0",
+          "istanbul-lib-instrument@4.0.3",
+          "@babel/core@7.28.5",
+          "@babel/helpers@7.28.4"
+        ],
+        "isUpgradable": true,
+        "isPatchable": false,
+        "isPinnable": false,
+        "isRuntime": false,
+        "name": "@babel/traverse",
+        "version": "7.22.20",
+        "severityWithCritical": "critical"
+      },
+      {
+        "id": "SNYK-JS-CROSSSPAWN-8303230",
+        "title": "Regular Expression Denial of Service (ReDoS)",
+        "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:P",
+        "credit": [
+          "Rongchen Li"
+        ],
+        "semver": {
+          "vulnerable": [
+            "<6.0.6",
+            ">=7.0.0 <7.0.5"
+          ]
+        },
+        "exploit": "Proof of Concept",
+        "fixedIn": [
+          "6.0.6",
+          "7.0.5"
+        ],
+        "patches": [],
+        "insights": {
+          "triageAdvice": null
+        },
+        "language": "js",
+        "severity": "high",
+        "cvssScore": 8.7,
+        "functions": [],
+        "malicious": false,
+        "isDisputed": false,
+        "moduleName": "cross-spawn",
+        "references": [
+          {
+            "url": "https://github.com/moxystudio/node-cross-spawn/commit/5ff3a07d9add449021d806e45c4168203aa833ff",
+            "title": "GitHub Commit"
+          },
+          {
+            "url": "https://github.com/moxystudio/node-cross-spawn/commit/640d391fde65388548601d95abedccc12943374f",
+            "title": "GitHub Commit"
+          },
+          {
+            "url": "https://github.com/moxystudio/node-cross-spawn/pull/160",
+            "title": "GitHub PR"
+          }
+        ],
+        "cvssDetails": [
+          {
+            "assigner": "Red Hat",
+            "severity": "medium",
+            "cvssV3Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:R/S:U/C:N/I:N/A:H",
+            "cvssV3BaseScore": 4.4,
+            "modificationTime": "2024-11-26T13:35:49.870515Z"
+          },
+          {
+            "assigner": "SUSE",
+            "severity": "medium",
+            "cvssV3Vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+            "cvssV3BaseScore": 5.5,
+            "modificationTime": "2024-12-12T11:03:12.776792Z"
+          }
+        ],
+        "cvssSources": [
+          {
+            "type": "primary",
+            "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:P",
+            "assigner": "Snyk",
+            "severity": "high",
+            "baseScore": 8.7,
+            "cvssVersion": "4.0",
+            "modificationTime": "2025-05-19T03:13:16.904167Z"
+          },
+          {
+            "type": "secondary",
+            "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:P",
+            "assigner": "Snyk",
+            "severity": "high",
+            "baseScore": 7.5,
+            "cvssVersion": "3.1",
+            "modificationTime": "2025-05-19T03:13:16.904167Z"
+          },
+          {
+            "type": "secondary",
+            "vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:R/S:U/C:N/I:N/A:H",
+            "assigner": "Red Hat",
+            "severity": "medium",
+            "baseScore": 4.4,
+            "cvssVersion": "3.1",
+            "modificationTime": "2024-11-26T13:35:49.870515Z"
+          },
+          {
+            "type": "secondary",
+            "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+            "assigner": "SUSE",
+            "severity": "medium",
+            "baseScore": 5.5,
+            "cvssVersion": "3.1",
+            "modificationTime": "2024-12-12T11:03:12.776792Z"
+          }
+        ],
+        "description": "## Overview\n\nAffected versions of this package are vulnerable to Regular Expression Denial of Service (ReDoS) due to improper input sanitization. An attacker can increase the CPU usage and crash the program by crafting a very large and well crafted string.\n## PoC\n```javascript\r\nconst { argument } = require('cross-spawn/lib/util/escape');\r\nvar str = \"\";\r\nfor (var i = 0; i < 1000000; i++) {\r\n  str += \"\\\\\";\r\n}\r\nstr += \"◎\";\r\n\r\nconsole.log(\"start\")\r\nargument(str)\r\nconsole.log(\"end\")\r\n\r\n// run `npm install cross-spawn` and `node attack.js` \r\n// then the program will stuck forever with high CPU usage\r\n```\n\n## Details\n\nDenial of Service (DoS) describes a family of attacks, all aimed at making a system inaccessible to its original and legitimate users. There are many types of DoS attacks, ranging from trying to clog the network pipes to the system by generating a large volume of traffic from many machines (a Distributed Denial of Service - DDoS - attack) to sending crafted requests that cause a system to crash or take a disproportional amount of time to process.\n\nThe Regular expression Denial of Service (ReDoS) is a type of Denial of Service attack. Regular expressions are incredibly powerful, but they aren't very intuitive and can ultimately end up making it easy for attackers to take your site down.\n\nLet’s take the following regular expression as an example:\n```js\nregex = /A(B|C+)+D/\n```\n\nThis regular expression accomplishes the following:\n- `A` The string must start with the letter 'A'\n- `(B|C+)+` The string must then follow the letter A with either the letter 'B' or some number of occurrences of the letter 'C' (the `+` matches one or more times). The `+` at the end of this section states that we can look for one or more matches of this section.\n- `D` Finally, we ensure this section of the string ends with a 'D'\n\nThe expression would match inputs such as `ABBD`, `ABCCCCD`, `ABCBCCCD` and `ACCCCCD`\n\nIt most cases, it doesn't take very long for a regex engine to find a match:\n\n```bash\n$ time node -e '/A(B|C+)+D/.test(\"ACCCCCCCCCCCCCCCCCCCCCCCCCCCCD\")'\n0.04s user 0.01s system 95% cpu 0.052 total\n\n$ time node -e '/A(B|C+)+D/.test(\"ACCCCCCCCCCCCCCCCCCCCCCCCCCCCX\")'\n1.79s user 0.02s system 99% cpu 1.812 total\n```\n\nThe entire process of testing it against a 30 characters long string takes around ~52ms. But when given an invalid string, it takes nearly two seconds to complete the test, over ten times as long as it took to test a valid string. The dramatic difference is due to the way regular expressions get evaluated.\n\nMost Regex engines will work very similarly (with minor differences). The engine will match the first possible way to accept the current character and proceed to the next one. If it then fails to match the next one, it will backtrack and see if there was another way to digest the previous character. If it goes too far down the rabbit hole only to find out the string doesn’t match in the end, and if many characters have multiple valid regex paths, the number of backtracking steps can become very large, resulting in what is known as _catastrophic backtracking_.\n\nLet's look at how our expression runs into this problem, using a shorter string: \"ACCCX\". While it seems fairly straightforward, there are still four different ways that the engine could match those three C's:\n1. CCC\n2. CC+C\n3. C+CC\n4. C+C+C.\n\nThe engine has to try each of those combinations to see if any of them potentially match against the expression. When you combine that with the other steps the engine must take, we can use [RegEx 101 debugger](https://regex101.com/debugger) to see the engine has to take a total of 38 steps before it can determine the string doesn't match.\n\nFrom there, the number of steps the engine must use to validate a string just continues to grow.\n\n| String | Number of C's | Number of steps |\n| -------|-------------:| -----:|\n| ACCCX | 3 | 38\n| ACCCCX | 4 | 71\n| ACCCCCX | 5 | 136\n| ACCCCCCCCCCCCCCX | 14 | 65,553\n\n\nBy the time the string includes 14 C's, the engine has to take over 65,000 steps just to see if the string is valid. These extreme situations can cause them to work very slowly (exponentially related to input size, as shown above), allowing an attacker to exploit this and can cause the service to excessively consume CPU, resulting in a Denial of Service.\n\n## Remediation\nUpgrade `cross-spawn` to version 6.0.6, 7.0.5 or higher.\n## References\n- [GitHub Commit](https://github.com/moxystudio/node-cross-spawn/commit/5ff3a07d9add449021d806e45c4168203aa833ff)\n- [GitHub Commit](https://github.com/moxystudio/node-cross-spawn/commit/640d391fde65388548601d95abedccc12943374f)\n- [GitHub PR](https://github.com/moxystudio/node-cross-spawn/pull/160)\n",
+        "epssDetails": {
+          "percentile": "0.32984",
+          "probability": "0.00129",
+          "modelVersion": "v2025.03.14"
+        },
+        "identifiers": {
+          "CVE": [
+            "CVE-2024-21538"
+          ],
+          "CWE": [
+            "CWE-1333"
+          ]
+        },
+        "packageName": "cross-spawn",
+        "proprietary": true,
+        "creationTime": "2024-10-24T14:00:39.760442Z",
+        "functions_new": [],
+        "alternativeIds": [],
+        "disclosureTime": "2024-10-24T06:04:14Z",
+        "exploitDetails": {
+          "sources": [
+            "Snyk"
+          ],
+          "maturityLevels": [
+            {
+              "type": "secondary",
+              "level": "Proof of Concept",
+              "format": "CVSSv3"
+            },
+            {
+              "type": "primary",
+              "level": "Proof of Concept",
+              "format": "CVSSv4"
+            }
+          ]
+        },
+        "packageManager": "npm",
+        "publicationTime": "2024-11-07T14:07:29.496832Z",
+        "severityBasedOn": "CVSS",
+        "modificationTime": "2025-05-19T03:13:16.904167Z",
+        "socialTrendAlert": false,
+        "packagePopularityRank": 99,
+        "from": [
+          "Solar System@6.7.6",
+          "nyc@15.1.0",
+          "istanbul-lib-processinfo@2.0.3",
+          "cross-spawn@7.0.3"
+        ],
+        "upgradePath": [
+          false,
+          "nyc@15.1.0",
+          "istanbul-lib-processinfo@2.0.3",
+          "cross-spawn@7.0.6"
+        ],
+        "isUpgradable": true,
+        "isPatchable": false,
+        "isPinnable": false,
+        "isRuntime": false,
+        "name": "cross-spawn",
+        "version": "7.0.3",
+        "severityWithCritical": "high"
+      }
+    ],
+    "upgrade": {
+      "express@4.18.2": {
+        "upgradeTo": "express@4.20.0",
+        "upgrades": [
+          "body-parser@1.20.1"
+        ],
+        "vulns": [
+          "SNYK-JS-BODYPARSER-7926860"
+        ]
+      },
+      "mongoose@6.12.0": {
+        "upgradeTo": "mongoose@6.13.6",
+        "upgrades": [
+          "mongoose@6.12.0",
+          "mongoose@6.12.0"
+        ],
+        "vulns": [
+          "SNYK-JS-MONGOOSE-8623536",
+          "SNYK-JS-MONGOOSE-8446504"
+        ]
+      }
+    },
+    "patch": {},
+    "ignore": {},
+    "pin": {}
+  },
+  "filesystemPolicy": false,
+  "filtered": {
+    "ignore": [],
+    "patch": []
+  },
+  "uniqueCount": 5,
+  "projectName": "Solar System",
+  "displayTargetFile": "package-lock.json",
+  "hasUnknownVersions": false,
+  "path": "/github/workspace"
+}

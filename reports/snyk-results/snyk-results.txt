@@ -1,0 +1,40 @@
+npm warn exec The following package was not found and will be installed: snyk@1.1301.0
+npm warn deprecated boolean@3.2.0: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+
+Testing /home/runner/work/DevSecOps-Pipeline/DevSecOps-Pipeline...
+
+Tested 325 dependencies for known issues, found 5 issues, 7 vulnerable paths.
+
+
+Issues to fix by upgrading:
+
+  Upgrade express@4.18.2 to express@4.20.0 to fix
+  ✗ Asymmetric Resource Consumption (Amplification) [High Severity][https://security.snyk.io/vuln/SNYK-JS-BODYPARSER-7926860] in body-parser@1.20.1
+    introduced by express@4.18.2 > body-parser@1.20.1
+
+  Upgrade mongoose@6.12.0 to mongoose@6.13.6 to fix
+  ✗ Improper Neutralization of Special Elements in Data Query Logic [High Severity][https://security.snyk.io/vuln/SNYK-JS-MONGOOSE-8623536] in mongoose@6.12.0
+    introduced by mongoose@6.12.0
+  ✗ Improper Neutralization of Special Elements in Data Query Logic [High Severity][https://security.snyk.io/vuln/SNYK-JS-MONGOOSE-8446504] in mongoose@6.12.0
+    introduced by mongoose@6.12.0
+
+
+Issues with no direct upgrade or patch:
+  ✗ Incomplete List of Disallowed Inputs [Critical Severity][https://security.snyk.io/vuln/SNYK-JS-BABELTRAVERSE-5962462] in @babel/traverse@7.22.20
+    introduced by nyc@15.1.0 > istanbul-lib-instrument@4.0.3 > @babel/core@7.22.20 > @babel/traverse@7.22.20 and 1 other path(s)
+  This issue was fixed in versions: 7.23.2, 8.0.0-alpha.4
+  ✗ Regular Expression Denial of Service (ReDoS) [High Severity][https://security.snyk.io/vuln/SNYK-JS-CROSSSPAWN-8303230] in cross-spawn@7.0.3
+    introduced by nyc@15.1.0 > foreground-child@2.0.0 > cross-spawn@7.0.3 and 1 other path(s)
+  This issue was fixed in versions: 6.0.6, 7.0.5
+
+
+
+Organization:      i221669
+Package manager:   npm
+Target file:       package-lock.json
+Project name:      Solar System
+Open source:       no
+Project path:      /home/runner/work/DevSecOps-Pipeline/DevSecOps-Pipeline
+Licenses:          enabled
+
+

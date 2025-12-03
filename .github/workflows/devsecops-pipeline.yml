@@ -13,7 +13,7 @@ env:
   DOCKER_IMAGE_TAG: ${{ github.sha }}
 
 jobs:
-  # Stage 1 & 2: Code Checkout and Dependency Installation
+  # Stage 1: Code Checkout and Dependency Installation
   build-and-test:
     name: Build and Unit Tests
     runs-on: ubuntu-latest
@@ -44,7 +44,7 @@ jobs:
           name: test-results
           path: test-results.xml
 
-  # Stage 4: Code Coverage
+  # Stage 2: Code Coverage
   code-coverage:
     name: Code Coverage Analysis
     runs-on: ubuntu-latest
@@ -76,7 +76,7 @@ jobs:
             coverage/
             .nyc_output/
 
-  # Stage 5: SAST - Static Application Security Testing
+  # Stage 3: SAST - Static Application Security Testing
   sast-semgrep:
     name: SAST - Semgrep
     runs-on: ubuntu-latest
@@ -123,7 +123,7 @@ jobs:
             semgrep-results.sarif
             semgrep-results.txt
 
-  # Stage 6: Dependency Scanning
+  # Stage 4: Dependency Scanning
   dependency-scan:
     name: Dependency Scanning - Snyk
     runs-on: ubuntu-latest
@@ -178,7 +178,7 @@ jobs:
           name: npm-audit-results
           path: npm-audit-results.json
 
-  # Stage 7: Secret Detection
+  # Stage 5: Secret Detection
   secret-scan:
     name: Secret Detection - TruffleHog
     runs-on: ubuntu-latest
@@ -198,7 +198,7 @@ jobs:
           head: ${{ github.sha }}
           extra_args: --only-verified
 
-  # Stage 8: Docker Build and Push
+  # Stage 6: Docker Build and Push
   docker-build:
     name: Docker Build and Push
     runs-on: ubuntu-latest
@@ -249,7 +249,7 @@ jobs:
           echo "FULL_IMAGE_NAME=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.ref_name }}-${{ github.sha }}" >> $GITHUB_ENV
           echo "Image pushed: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.ref_name }}-${{ github.sha }}"
 
-  # Stage 9: Container Scanning
+  # Stage 7: Container Scanning
   container-scan:
     name: Container Scanning - Trivy
     runs-on: ubuntu-latest
@@ -306,7 +306,7 @@ jobs:
             trivy-results.json
             trivy-results.html
 
-  # Stage 10: DAST - Dynamic Application Security Testing
+  # Stage 8: DAST - Dynamic Application Security Testing
   dast-zap:
     name: DAST - OWASP ZAP
     runs-on: ubuntu-latest
@@ -360,7 +360,7 @@ jobs:
         if: always()
         run: docker stop solar-system-app && docker rm solar-system-app
 
-  # Stage 11: Deploy Infrastructure and Application to Azure
+  # Stage 9: Deploy Infrastructure and Application to Azure
   deploy-azure:
     name: Deploy to Azure Web App
     runs-on: ubuntu-latest
